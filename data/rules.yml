@@ -1,0 +1,21 @@
+rules:
+ - rule: respond to FAQs
+   steps:
+   - intent: faq
+   - action: utter_faq
+
+ - rule: option 1, rasa
+   steps:
+   - action: utter_greet
+   - intent: inform
+     entities:
+     - number: "1"
+   - action: utter_faq/ask_rasa
+
+ - rule: option 2, kaggle
+   steps:
+   - action: utter_greet
+   - intent: inform
+     entities:
+     - number: "2"
+   - action: utter_faq/ask_kaggle

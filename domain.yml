@@ -1,0 +1,52 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- inform
+- botchallenge
+- faq
+- ask_resource
+entities:
+- time
+- number
+- resource_type
+slots: 
+  time:
+    type: any
+  number:
+    type: float
+    min_value: 0
+    max_value: 3
+  resource_type:
+    type: text
+responses:
+  utter_greet:
+  - text: "Hi! What questions do you have? Enter 1 to ask about Rasa and 2 to ask about Kaggle."
+  utter_i_am_a_bot:
+  - text: "I am a bot, powered by a Rasa!"
+  utter_ask_type:
+  - text: What type of resouce do you want? Book, course or video?
+    buttons:
+    - title: "book"
+      payload: /inform{"resource_type": "Book"}
+    - title: "video"
+      payload: /inform{"resource_type": "Videos"}
+  utter_faq/ask_ml:
+  - text: If you want to learn about machine learning in general, you could try the fast.ai (https://www.fast.ai/) course or Kaggle learn (https://www.kaggle.com/learn/overview)
+  utter_faq/ask_nlp:
+  - text: I'd recommend the book Speech and Language Processing (https://web.stanford.edu/~jurafsky/slp3/) or the Tidy Text Book (https://www.tidytextmining.com/)
+  utter_faq/ask_rasa_learn:
+  - text: There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/) or you can check out the Rasa Masterclass (https://info.rasa.com/masterclass)
+  utter_faq/ask_mentor:
+  - text: I don't have capacity to take on any mentees right now, sorry. If you have a quick question you can reach out ot me on Twitter (@rctatman) or ask on the Rasa or Kaggle forums.
+  utter_faq/ask_kaggle:
+  - text: The best place for questions about Kaggle is the Kaggle forums (https://www.kaggle.com/discussion) or you could try KaggleNoobs (https://www.kaggle.com/getting-started/20577)
+  utter_faq/ask_rasa:
+  - text: Rasa is a software company that builds (mostly) free or open sourcetools to help make, maintain and improve chatbots.
+actions:
+- '...'
+- utter_greet
+- utter_i_am_a_bot
+- query_resource_type
+version: '2.0'

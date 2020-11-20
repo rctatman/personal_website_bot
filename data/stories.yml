@@ -1,0 +1,19 @@
+stories:
+ - story: greet
+   steps:
+   - intent: greet
+   - action: utter_greet
+
+ - story: are you a bot
+   steps:
+   - intent: botchallenge
+   - action: utter_i_am_a_bot
+
+ - story: asking for resource (query)
+   steps:
+   - intent: ask_resource
+   - action: utter_ask_type
+   - intent: inform
+   - slot_was_set:
+     - resource_type: "book"
+   - action: query_resource_type
