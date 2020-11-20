@@ -27,11 +27,11 @@ responses:
   - text: "I am a bot, powered by a Rasa!"
   utter_ask_type:
   - text: What type of resouce do you want? Book, course or video?
-    buttons:
-    - title: "book"
-      payload: /inform{"resource_type": "Book"}
-    - title: "video"
-      payload: /inform{"resource_type": "Videos"}
+#    buttons:
+#    - title: "book"
+#      payload: /inform{"resource_type":"Book"}
+#    - title: "video"
+#      payload: /inform{"resource_type":"Videos"}
   utter_faq/ask_ml:
   - text: If you want to learn about machine learning in general, you could try the fast.ai (https://www.fast.ai/) course or Kaggle learn (https://www.kaggle.com/learn/overview)
   utter_faq/ask_nlp:
