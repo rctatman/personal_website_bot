@@ -1,9 +1,5 @@
 language: en
 pipeline:
-  - name: "DucklingHTTPExtractor"
-    url: "http://localhost:8000"
-    dimensions: ["time", "number"]
-    timeout : 1
   - name: WhitespaceTokenizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer

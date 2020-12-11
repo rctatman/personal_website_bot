@@ -4,18 +4,7 @@ rules:
    - intent: faq
    - action: utter_faq
 
- - rule: option 1, rasa
+ - rule: handle out of scope questions
    steps:
-   - action: utter_greet
-   - intent: inform
-     entities:
-     - number: "1"
-   - action: utter_faq/ask_rasa
-
- - rule: option 2, kaggle
-   steps:
-   - action: utter_greet
-   - intent: inform
-     entities:
-     - number: "2"
-   - action: utter_faq/ask_kaggle
+   - intent: out_of_scope
+   - action: utter_out_of_scope

@@ -7,46 +7,49 @@ intents:
 - botchallenge
 - faq
 - ask_resource
+- out_of_scope
 entities:
-- time
 - number
 - resource_type
-slots: 
-  time:
-    type: any
-  number:
-    type: float
-    min_value: 0
-    max_value: 3
+slots:
   resource_type:
     type: text
+    influence_conversation: true
 responses:
   utter_greet:
-  - text: "Hi! What questions do you have? Enter 1 to ask about Rasa and 2 to ask about Kaggle."
+  - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked
+      a lot. What questions do you have?
   utter_i_am_a_bot:
-  - text: "I am a bot, powered by a Rasa!"
+  - text: I am a bot, powered by a Rasa!
   utter_ask_type:
   - text: What type of resouce do you want? Book, course or video?
-#    buttons:
-#    - title: "book"
-#      payload: /inform{"resource_type":"Book"}
-#    - title: "video"
-#      payload: /inform{"resource_type":"Videos"}
   utter_faq/ask_ml:
-  - text: If you want to learn about machine learning in general, you could try the fast.ai (https://www.fast.ai/) course or Kaggle learn (https://www.kaggle.com/learn/overview)
+  - text: If you want to learn about machine learning in general, you could try the
+      fast.ai (https://www.fast.ai/) course or Kaggle learn (https://www.kaggle.com/learn/overview)
   utter_faq/ask_nlp:
-  - text: I'd recommend the book Speech and Language Processing (https://web.stanford.edu/~jurafsky/slp3/) or the Tidy Text Book (https://www.tidytextmining.com/)
+  - text: I'd recommend the book Speech and Language Processing (https://web.stanford.edu/~jurafsky/slp3/)
+      or the Tidy Text Book (https://www.tidytextmining.com/)
   utter_faq/ask_rasa_learn:
-  - text: There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/) or you can check out the Rasa Masterclass (https://info.rasa.com/masterclass)
+  - text: There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/)
+      or you can check out the Rasa Masterclass (https://info.rasa.com/masterclass)
   utter_faq/ask_mentor:
-  - text: I don't have capacity to take on any mentees right now, sorry. If you have a quick question you can reach out ot me on Twitter (@rctatman) or ask on the Rasa or Kaggle forums.
+  - text: I don't have capacity to take on any mentees right now, sorry. If you have
+      a quick question you can reach out ot me on Twitter (@rctatman) or ask on the
+      Rasa or Kaggle forums.
   utter_faq/ask_kaggle:
-  - text: The best place for questions about Kaggle is the Kaggle forums (https://www.kaggle.com/discussion) or you could try KaggleNoobs (https://www.kaggle.com/getting-started/20577)
+  - text: The best place for questions about Kaggle is the Kaggle forums (https://www.kaggle.com/discussion)
+      or you could try KaggleNoobs (https://www.kaggle.com/getting-started/20577)
   utter_faq/ask_rasa:
-  - text: Rasa is a software company that builds (mostly) free or open sourcetools to help make, maintain and improve chatbots.
+  - text: Rasa is a software company that builds (mostly) free or open sourcetools
+      to help make, maintain and improve chatbots.
+  utter_faq/ask_r_vs_python:
+  - text: I prefer R when working with tabular data, doing statistial modelling or
+      visualization. Otherwise, I'll generally use Python.
+  utter_out_of_scope:
+  - text: I'm sorry, this FAQ bot can't handle that input. Try asking about Machine
+      Learning or NLP.
 actions:
 - '...'
 - utter_greet
 - utter_i_am_a_bot
 - query_resource_type
-version: '2.0'

@@ -65,7 +65,7 @@ class DbQueryingMethods:
         rows = cur.fetchall()
 
         if len(list(rows)) < 1:
-            return[("There are no resources matching your query.")]
+            return "There are no resources matching your query."
         else:
             for row in random.sample(rows, 1):
                 return f"Try the {(row[4]).lower()} {row[0]} by {row[1]}. You can find it at {row[2]}."
