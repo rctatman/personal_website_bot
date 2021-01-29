@@ -19,37 +19,33 @@ nlu:
     - howdy
 - intent: inform
   examples: |
-    - 1
-    - 2
-    - option 1
     - I like [books](resource_type)
     - i prefer a [book](resource_type)
     - [videos](resource_type)
     - i'd like a [course](resource_type)
+    - [machine learning](ml)
+    - [ai](ml)
+    - [nlp](nlp)
+    - [language technlogy](nlp)
 - intent: ask_resource
   examples: |
     - what are some good learning resources?
-    - can you reommend a [course](resource_type) in ML
+    - can you reommend a [course](resource_type) in [ML](ml)
     - what's a good [book](resource_type)
     - how can I get started?
     - what are some guides to learn?
     - i want to learn more
     - can you recommend a learning guide?
-- intent: faq/ask_ml
-  examples: |
-    - I want to know about machine learning
-    - machine learning
-    - ai
-- intent: faq/ask_nlp
-  examples: |
-    - nlp
-    - language technlogy
-- intent: faq/ask_rasa_learn
+    - I want to know about [machine learning](ml)
+    - how to do [machine learning](ml)?
+- intent: faq/ask_rasa
   examples: |
     - how can i learn to build a chatbot?
     - how to make a chatbot?
-    - how to use rasa?
-    - I need help with Rasa
+    - how to use [rasa](rasa)?
+    - I need help with [Rasa](rasa)
+    - what's [rasa](rasa)?
+    - what can I do with [rasa](rasa)
 - intent: faq/ask_mentor
   examples: |
     - can you be my mentor?
@@ -62,10 +58,6 @@ nlu:
     - how do I do kaggle competitions?
     - how to start kaggling
     - what's kaggle
-- intent: faq/ask_rasa
-  examples: |
-    - what's rasa?
-    - what can I do with rasa
 - intent: faq/ask_r_vs_python
   examples: |
     - do you use R or Python?

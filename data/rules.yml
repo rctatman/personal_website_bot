@@ -1,13 +1,5 @@
 version: "2.0"
-stories:
-- story: Story from Conversation ID ced5cc4cf2a3443bb3918eba8288c212
-  steps:
-  - intent: faq/ask_ml
-  - action: utter_faq/ask_rasa
-  - intent: faq/ask_rasa_learn
-  - action: utter_faq
-  - intent: inform
-  - action: action_default_fallback
+
 rules:
 - rule: respond to FAQs
   steps:

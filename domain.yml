@@ -1,3 +1,4 @@
+version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -9,12 +10,20 @@ intents:
 - ask_resource
 - out_of_scope
 entities:
-- number
 - resource_type
+- nlp
+- ml 
+- rasa
 slots:
   resource_type:
     type: text
     influence_conversation: true
+  resource_topic:
+    type: categorical
+    values: 
+      - NLP
+      - ML
+      - Rasa
 responses:
   utter_greet:
   - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked
@@ -23,14 +32,9 @@ responses:
   - text: I am a bot, powered by a Rasa!
   utter_ask_type:
   - text: What type of resouce do you want? Book, course or video?
-  utter_faq/ask_ml:
-  - text: If you want to learn about machine learning in general, you could try the
-      fast.ai (https://www.fast.ai/) course or Kaggle learn (https://www.kaggle.com/learn/overview)
-  utter_faq/ask_nlp:
-  - text: I'd recommend the book Speech and Language Processing (https://web.stanford.edu/~jurafsky/slp3/)
-      or the Tidy Text Book (https://www.tidytextmining.com/)
-  utter_faq/ask_rasa_learn:
-  - text: There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/)
+  utter_faq/ask_rasa:
+  - text: Rasa is a software company that builds (mostly) free or open sourcetools
+      to help make, maintain and improve chatbots. There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/)
       or you can check out the Rasa Masterclass (https://info.rasa.com/masterclass)
   utter_faq/ask_mentor:
   - text: I don't have capacity to take on any mentees right now, sorry. If you have
@@ -39,9 +43,6 @@ responses:
   utter_faq/ask_kaggle:
   - text: The best place for questions about Kaggle is the Kaggle forums (https://www.kaggle.com/discussion)
       or you could try KaggleNoobs (https://www.kaggle.com/getting-started/20577)
-  utter_faq/ask_rasa:
-  - text: Rasa is a software company that builds (mostly) free or open sourcetools
-      to help make, maintain and improve chatbots.
   utter_faq/ask_r_vs_python:
   - text: I prefer R when working with tabular data, doing statistial modelling or
       visualization. Otherwise, I'll generally use Python.
