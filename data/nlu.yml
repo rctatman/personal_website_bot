@@ -27,6 +27,7 @@ nlu:
     - [ai](ml)
     - [nlp](nlp)
     - [language technlogy](nlp)
+    - [book](resource_type)
 - intent: ask_resource
   examples: |
     - what are some good learning resources?
@@ -38,6 +39,7 @@ nlu:
     - can you recommend a learning guide?
     - I want to know about [machine learning](ml)
     - how to do [machine learning](ml)?
+    - I want to learn about [ml](ml)
 - intent: faq/ask_rasa
   examples: |
     - how can i learn to build a chatbot?

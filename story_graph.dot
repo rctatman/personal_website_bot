@@ -1,0 +1,19 @@
+digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class=active, fontsize=12, label=action_session_start];
+2 [class=active, fontsize=12, label=utter_ask_type];
+3 [class=active, fontsize=12, label=query_resource_type];
+4 [class="dashed active", fontsize=12, label=action_default_fallback];
+5 [class="intent active", fillcolor=lightblue, label="I want to learn about ml", shape=rect, style=filled];
+6 [class="intent active", fillcolor=lightblue, label=book, shape=rect, style=filled];
+7 [class="intent active", fillcolor=lightblue, label="/stop", shape=rect, style=filled];
+0 -> "-1"  [class="", key=NONE, label=""];
+0 -> 1  [class=active, key=NONE, label=""];
+1 -> 5  [class=active, key=0];
+2 -> 6  [class=active, key=0];
+3 -> 7  [class=active, key=0];
+5 -> 2  [class=active, key=0];
+6 -> 3  [class=active, key=0];
+7 -> 4  [class=active, key=0];
+}

@@ -1,5 +1,3 @@
-version: "2.0"
-
 stories:
  - story: greet
    steps:
@@ -18,4 +16,17 @@ stories:
    - intent: inform
    - slot_was_set:
      - resource_type: "book"
+   - action: query_resource_type
+
+ - story: interactive_story_1
+   steps:
+   - intent: ask_resource
+     entities:
+     - ml: ml
+   - action: utter_ask_type
+   - intent: inform
+     entities:
+     - resource_type: book
+   - slot_was_set:
+     - resource_type: book
    - action: query_resource_type

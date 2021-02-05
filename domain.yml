@@ -1,56 +1,54 @@
-version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet
-- inform
-- botchallenge
-- faq
 - ask_resource
+- inform
+- stop
+- faq:
+    is_retrieval_intent: true
+- greet
+- botchallenge
 - out_of_scope
 entities:
-- resource_type
+- ml
 - nlp
-- ml 
 - rasa
+- resource_type
 slots:
+  resource_topic:
+    type: categorical
+    influence_conversation: true
+    values:
+    - nlp
+    - ml
+    - rasa
+    - __other__
   resource_type:
     type: text
     influence_conversation: true
-  resource_topic:
-    type: categorical
-    values: 
-      - NLP
-      - ML
-      - Rasa
 responses:
   utter_greet:
-  - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked
-      a lot. What questions do you have?
+  - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked a lot. What questions do you have?
   utter_i_am_a_bot:
   - text: I am a bot, powered by a Rasa!
   utter_ask_type:
   - text: What type of resouce do you want? Book, course or video?
   utter_faq/ask_rasa:
-  - text: Rasa is a software company that builds (mostly) free or open sourcetools
-      to help make, maintain and improve chatbots. There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/)
-      or you can check out the Rasa Masterclass (https://info.rasa.com/masterclass)
+  - text: Rasa is a software company that builds (mostly) free or open sourcetools to help make, maintain and improve chatbots. There's a free Udemy course for getting started with Rasa (https://www.udemy.com/course/rasa-for-beginners/) or you can check out the Rasa Masterclass (https://info.rasa.com/masterclass)
   utter_faq/ask_mentor:
-  - text: I don't have capacity to take on any mentees right now, sorry. If you have
-      a quick question you can reach out ot me on Twitter (@rctatman) or ask on the
-      Rasa or Kaggle forums.
+  - text: I don't have capacity to take on any mentees right now, sorry. If you have a quick question you can reach out ot me on Twitter (@rctatman) or ask on the Rasa or Kaggle forums.
   utter_faq/ask_kaggle:
-  - text: The best place for questions about Kaggle is the Kaggle forums (https://www.kaggle.com/discussion)
-      or you could try KaggleNoobs (https://www.kaggle.com/getting-started/20577)
+  - text: The best place for questions about Kaggle is the Kaggle forums (https://www.kaggle.com/discussion) or you could try KaggleNoobs (https://www.kaggle.com/getting-started/20577)
   utter_faq/ask_r_vs_python:
-  - text: I prefer R when working with tabular data, doing statistial modelling or
-      visualization. Otherwise, I'll generally use Python.
+  - text: I prefer R when working with tabular data, doing statistial modelling or visualization. Otherwise, I'll generally use Python.
   utter_out_of_scope:
-  - text: I'm sorry, this FAQ bot can't handle that input. Try asking about Machine
-      Learning or NLP.
+  - text: I'm sorry, this FAQ bot can't handle that input. Try asking about Machine Learning or NLP.
 actions:
 - '...'
+- query_resource_type
+- utter_ask_type
+- utter_faq
 - utter_greet
 - utter_i_am_a_bot
-- query_resource_type
+version: '2.0'

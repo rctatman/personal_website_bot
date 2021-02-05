@@ -16,6 +16,19 @@ import sqlite3
 import random
 
 
+# TODO: 
+# - query more than one field/column at a time
+# - if nothing matches both fields return results that match
+#   at least one
+# - data validation for close but not exact matches
+
+
+# multifield query process:
+# - first look for both
+# - second look for either, inform not perfect match
+# - third use LIKE to find acceptably close resutls
+# - fourth return no results
+
 class QueryResourceType(Action):
 
     def name(self) -> Text:
@@ -32,15 +45,16 @@ class QueryResourceType(Action):
 
         get_query_results = DbQueryingMethods.select_by_slot(conn=conn,
             slot_name=slot_name,slot_value=slot_value)
-        dispatcher.utter_message(text=str(get_query_results))
+        return_text = DbQueryingMethods.rows_info_as_text(get_query_results)
+        dispatcher.utter_message(text=str(return_text))
 
         return 
 
-
 class DbQueryingMethods:
     def create_connection(db_file):
-        """ create a database connection to the SQLite database
-            specified by the db_file
+        """ 
+        create a database connection to the SQLite database
+        specified by the db_file
         :param db_file: database file
         :return: Connection object or None
         """
@@ -64,6 +78,14 @@ class DbQueryingMethods:
 
         rows = cur.fetchall()
 
+        return(rows)
+
+    def rows_info_as_text(rows):
+        """
+        Return one of the rows (randomly selcted) passed in 
+        as a human-readable text. If there are no rows, returns
+        text to that effect.
+        """
         if len(list(rows)) < 1:
             return "There are no resources matching your query."
         else:

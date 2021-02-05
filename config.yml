@@ -16,6 +16,8 @@ pipeline:
 
 policies:
   - name: MemoizationPolicy
+  - name: AugmentedMemoizationPolicy
+    max_history: 2
   - name: RulePolicy
   - name: TEDPolicy
     max_history: 5
