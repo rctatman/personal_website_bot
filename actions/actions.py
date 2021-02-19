@@ -14,6 +14,7 @@ from rasa_sdk.executor import CollectingDispatcher
 
 import sqlite3
 import random
+from fuzzywuzzy import process
 
 
 # TODO: 
@@ -24,10 +25,11 @@ import random
 
 
 # multifield query process:
+# - first match each slot to closest item in that column
+# actual complex queries
 # - first look for both
 # - second look for either, inform not perfect match
-# - third use LIKE to find acceptably close resutls
-# - fourth return no results
+# - third return no results
 
 class QueryResourceType(Action):
 
@@ -42,6 +44,10 @@ class QueryResourceType(Action):
 
         slot_value = tracker.get_slot("resource_type")
         slot_name = "Type"
+        # adding fuzzy matching, fingers crossed
+        slot_value = DbQueryingMethods.get_closest_value(conn=conn,
+            slot_name=slot_name,slot_value=slot_value)[0]
+        print(f"slot_value = {slot_value}")
 
         get_query_results = DbQueryingMethods.select_by_slot(conn=conn,
             slot_name=slot_name,slot_value=slot_value)
@@ -66,6 +72,20 @@ class DbQueryingMethods:
 
         return conn
 
+    def get_closest_value(conn, slot_name, slot_value):
+        """ Given a database column & text input, find the closest 
+        match for the input in the column.
+        """
+        # get a list of all distinct values from our target column
+        fuzzy_match_cur = conn.cursor()
+        fuzzy_match_cur.execute(f"""SELECT DISTINCT {slot_name} 
+                                FROM eduresource""")
+        column_values = fuzzy_match_cur.fetchall()
+
+        top_match = process.extractOne(slot_value, column_values)
+
+        return(top_match[0])
+
     def select_by_slot(conn, slot_name, slot_value):
         """
         Query all rows in the tasks table
@@ -73,8 +93,8 @@ class DbQueryingMethods:
         :return:
         """
         cur = conn.cursor()
-        cur.execute(f"""SELECT * FROM eduresource
-                    WHERE {slot_name}='{slot_value}'""")
+        cur.execute(f'''SELECT * FROM eduresource
+                    WHERE {slot_name}="{slot_value}"''')
 
         rows = cur.fetchall()
 
