@@ -16,7 +16,7 @@ stories:
    - intent: inform
    - slot_was_set:
      - resource_type: "book"
-   - action: query_resource_type
+   - action: query_resource
 
  - story: interactive_story_1
    steps:
@@ -29,4 +29,4 @@ stories:
      - resource_type: book
    - slot_was_set:
      - resource_type: book
-   - action: query_resource_type
+   - action: query_resource

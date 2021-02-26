@@ -46,7 +46,7 @@ responses:
   - text: I'm sorry, this FAQ bot can't handle that input. Try asking about Machine Learning or NLP.
 actions:
 - '...'
-- query_resource_type
+- query_resource
 - utter_ask_type
 - utter_faq
 - utter_greet

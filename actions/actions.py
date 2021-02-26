@@ -27,9 +27,8 @@ from fuzzywuzzy import process
 # multifield query process:
 # - first match each slot to closest item in that column
 # actual complex queries
-# - first look for both
-# - second look for either, inform not perfect match
-# - third return no results
+# - look for either, find union, 
+# if none inform not perfect match
 
 class QueryResourceType(Action):
 
@@ -44,14 +43,62 @@ class QueryResourceType(Action):
 
         slot_value = tracker.get_slot("resource_type")
         slot_name = "Type"
+        
         # adding fuzzy matching, fingers crossed
         slot_value = DbQueryingMethods.get_closest_value(conn=conn,
             slot_name=slot_name,slot_value=slot_value)[0]
-        print(f"slot_value = {slot_value}")
 
         get_query_results = DbQueryingMethods.select_by_slot(conn=conn,
             slot_name=slot_name,slot_value=slot_value)
         return_text = DbQueryingMethods.rows_info_as_text(get_query_results)
+        dispatcher.utter_message(text=str(return_text))
+
+        return 
+
+class QueryResource(Action):
+
+    def name(self) -> Text:
+        return "query_resource"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        conn = DbQueryingMethods.create_connection(db_file="./edu_db/resourcesDB")
+
+        # get matching entries for resource type
+        resource_type_value = tracker.get_slot("resource_type")
+        resource_type_name = "Type"
+        resource_type_value = DbQueryingMethods.get_closest_value(conn=conn,
+            slot_name=resource_type_name,slot_value=resource_type_value)[0]
+        query_results_type = DbQueryingMethods.select_by_slot(conn=conn,
+            slot_name=resource_type_name,slot_value=resource_type_value)
+
+        # get matching for resource topic
+        resource_topic_value = tracker.get_slot("resource_topic")
+        resource_topic_name = "Topic"
+        resource_topic_value = DbQueryingMethods.get_closest_value(conn=conn,    
+            slot_name=resource_topic_name,slot_value=resource_topic_value)[0]
+        query_results_topic = DbQueryingMethods.select_by_slot(conn=conn,
+            slot_name=resource_topic_name,slot_value=resource_topic_value)
+
+        # intersection of two queries
+        query_results_overlap = list(set(query_results_topic)&set(query_results_type))
+        
+        # apology for not having the right info
+        apology = "I couldn't find exactly what you wanted, but you might like this."
+
+        # return info for both, or topic match or type match or nothing
+        if len(query_results_overlap)>0:
+            return_text = DbQueryingMethods.rows_info_as_text(query_results_overlap)
+        elif len(list(query_results_topic))>0:
+            return_text = apology + DbQueryingMethods.rows_info_as_text(query_results_topic)
+        elif len(list(query_results_type))>0:
+            return_text = apology + DbQueryingMethods.rows_info_as_text(query_results_type)
+        else:
+            return_text = DbQueryingMethods.rows_info_as_text(query_results_overlap)
+        
+        # print results for user
         dispatcher.utter_message(text=str(return_text))
 
         return 
@@ -96,6 +143,7 @@ class DbQueryingMethods:
         cur.execute(f'''SELECT * FROM eduresource
                     WHERE {slot_name}="{slot_value}"''')
 
+        # return an array
         rows = cur.fetchall()
 
         return(rows)
