@@ -11,22 +11,15 @@ intents:
 - botchallenge
 - out_of_scope
 entities:
-- ml
-- nlp
-- rasa
+- resource_topic
 - resource_type
 slots:
   resource_topic:
-    type: categorical
-    influence_conversation: true
-    values:
-    - nlp
-    - ml
-    - rasa
-    - __other__
+    type: text
+    influence_conversation: false
   resource_type:
     type: text
-    influence_conversation: true
+    influence_conversation: false
 responses:
   utter_greet:
   - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked a lot. What questions do you have?

@@ -8,6 +8,7 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List
+import collections
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -68,6 +69,9 @@ class QueryResource(Action):
 
         # get matching entries for resource type
         resource_type_value = tracker.get_slot("resource_type")
+        # make sure we don't pass None to our fuzzy matcher
+        if resource_type_value == None:
+            resource_type_value = " "
         resource_type_name = "Type"
         resource_type_value = DbQueryingMethods.get_closest_value(conn=conn,
             slot_name=resource_type_name,slot_value=resource_type_value)[0]
@@ -76,6 +80,9 @@ class QueryResource(Action):
 
         # get matching for resource topic
         resource_topic_value = tracker.get_slot("resource_topic")
+        # make sure we don't pass None to our fuzzy matcher
+        if resource_topic_value == None:
+            resource_topic_value = " "
         resource_topic_name = "Topic"
         resource_topic_value = DbQueryingMethods.get_closest_value(conn=conn,    
             slot_name=resource_topic_name,slot_value=resource_topic_value)[0]
@@ -83,8 +90,11 @@ class QueryResource(Action):
             slot_name=resource_topic_name,slot_value=resource_topic_value)
 
         # intersection of two queries
-        query_results_overlap = list(set(query_results_topic)&set(query_results_type))
-        
+        topic_set = collections.Counter(query_results_topic)
+        type_set =  collections.Counter(query_results_type)
+
+        query_results_overlap = list((topic_set & type_set).elements())
+
         # apology for not having the right info
         apology = "I couldn't find exactly what you wanted, but you might like this."
 
@@ -126,7 +136,7 @@ class DbQueryingMethods:
         # get a list of all distinct values from our target column
         fuzzy_match_cur = conn.cursor()
         fuzzy_match_cur.execute(f"""SELECT DISTINCT {slot_name} 
-                                FROM eduresource""")
+                                FROM eduresources""")
         column_values = fuzzy_match_cur.fetchall()
 
         top_match = process.extractOne(slot_value, column_values)
@@ -140,7 +150,7 @@ class DbQueryingMethods:
         :return:
         """
         cur = conn.cursor()
-        cur.execute(f'''SELECT * FROM eduresource
+        cur.execute(f'''SELECT * FROM eduresources
                     WHERE {slot_name}="{slot_value}"''')
 
         # return an array

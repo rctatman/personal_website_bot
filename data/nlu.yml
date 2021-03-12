@@ -23,31 +23,32 @@ nlu:
     - i prefer a [book](resource_type)
     - [videos](resource_type)
     - i'd like a [course](resource_type)
-    - [machine learning](ml)
-    - [ai](ml)
-    - [nlp](nlp)
-    - [language technlogy](nlp)
-    - [book](resource_type)
 - intent: ask_resource
   examples: |
     - what are some good learning resources?
-    - can you reommend a [course](resource_type) in [ML](ml)
+    - can you reommend a [course](resource_type) in [ML](resource_topic)
     - what's a good [book](resource_type)
     - how can I get started?
     - what are some guides to learn?
     - i want to learn more
     - can you recommend a learning guide?
-    - I want to know about [machine learning](ml)
-    - how to do [machine learning](ml)?
-    - I want to learn about [ml](ml)
+    - what are some goods [videos](resource_type)
+    - do you know an [nlp](resource_topic) [video](resource_type)?
+    - I want to know about [machine learning]{"entity":"resource_topic", "value":"ml"}
+    - how to do [machine learning]{"entity":"resource_topic", "value":"ml"}?
+    - I want to learn about [ml](resource_topic)
+    - i want to learn [nlp](resource_topic)
+    - where cna i learn [machine learning]{"entity":"resource_topic", "value":"ml"}
+    - how to learn [ai]{"entity":"resource_topic", "value":"ml"}
+    - i want a [video](resource_type) about [language technlogy]{"entity":"resource_topic", "value":"nlp"}
 - intent: faq/ask_rasa
   examples: |
     - how can i learn to build a chatbot?
     - how to make a chatbot?
-    - how to use [rasa](rasa)?
-    - I need help with [Rasa](rasa)
-    - what's [rasa](rasa)?
-    - what can I do with [rasa](rasa)
+    - how to use [rasa](resource_topic)?
+    - I need help with [Rasa](resource_topic)
+    - what's [rasa](resource_topic)?
+    - what can I do with [rasa](resource_topic)
 - intent: faq/ask_mentor
   examples: |
     - can you be my mentor?
