@@ -1,0 +1,65 @@
+{
+  "botchallenge": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 2,
+    "confused_with": {
+      "ask_resource": 1
+    }
+  },
+  "out_of_scope": {
+    "precision": 0.5,
+    "recall": 0.5,
+    "f1-score": 0.5,
+    "support": 2,
+    "confused_with": {
+      "faq": 1
+    }
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "ask_resource": {
+    "precision": 0.75,
+    "recall": 0.75,
+    "f1-score": 0.75,
+    "support": 4,
+    "confused_with": {
+      "faq": 1
+    }
+  },
+  "faq": {
+    "precision": 0.7142857142857143,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.7692307692307692,
+    "support": 6,
+    "confused_with": {
+      "out_of_scope": 1
+    }
+  },
+  "inform": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "accuracy": 0.7647058823529411,
+  "macro avg": {
+    "precision": 0.8273809523809524,
+    "recall": 0.763888888888889,
+    "f1-score": 0.780982905982906,
+    "support": 17
+  },
+  "weighted avg": {
+    "precision": 0.7815126050420167,
+    "recall": 0.7647058823529411,
+    "f1-score": 0.7616892911010558,
+    "support": 17
+  }
+}

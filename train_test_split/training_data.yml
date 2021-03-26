@@ -1,0 +1,70 @@
+version: "2.0"
+nlu:
+- intent: faq/ask_rasa
+  examples: |
+    - what can I do with [rasa](resource_topic)
+    - how to use [rasa](resource_topic)?
+    - what's [rasa](resource_topic)?
+    - how can i learn to build a chatbot?
+- intent: faq/ask_mentor
+  examples: |
+    - do you mentor people?
+    - are you taking new students?
+    - how can I be your student?
+    - can you guide me?
+- intent: faq/ask_kaggle
+  examples: |
+    - how do I do kaggle competitions?
+    - how to start kaggling
+    - what's kaggle
+- intent: faq/ask_r_vs_python
+  examples: |
+    - is python better?
+    - python or r?
+    - what should I use R for?
+    - do you use R or Python?
+- intent: botchallenge
+  examples: |
+    - Are you a bot?
+    - is this a real person
+    - you're a bot, aren't you?
+    - are you a bot
+- intent: greet
+  examples: |
+    - Good morning
+    - Good day
+    - Hey!
+    - Hallo
+    - Hi
+- intent: inform
+  examples: |
+    - [videos](resource_type)
+    - i prefer a [book](resource_type)
+    - i'd like a [course](resource_type)
+- intent: ask_resource
+  examples: |
+    - I want to know about [machine learning]{"entity": "resource_topic", "value": "ml"}
+    - how to learn [ai]{"entity": "resource_topic", "value": "ml"}
+    - can you reommend a [course](resource_type) in [ML](resource_topic)
+    - i want a [video](resource_type) about [language technlogy]{"entity": "resource_topic", "value": "nlp"}
+    - what are some good learning resources?
+    - how can I get started?
+    - what are some goods [videos](resource_type)
+    - what are some guides to learn?
+    - can you recommend a learning guide?
+    - how to do [machine learning]{"entity": "resource_topic", "value": "ml"}?
+    - i want to learn more
+    - do you know an [nlp](resource_topic) [video](resource_type)?
+- intent: out_of_scope
+  examples: |
+    - I need advice on my startup
+    - are you looking for a job?
+    - I'm a recruiter
+    - what should I write my thesis on?
+- synonym: ml
+  examples: |
+    - machine learning
+    - ai
+- synonym: nlp
+  examples: |
+    - language technlogy

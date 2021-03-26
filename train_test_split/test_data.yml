@@ -1,0 +1,44 @@
+version: "2.0"
+nlu:
+- intent: faq/ask_rasa
+  examples: |
+    - how to make a chatbot?
+    - I need help with [Rasa](resource_topic)
+- intent: faq/ask_mentor
+  examples: |
+    - can you be my mentor?
+    - can you be my teacher?
+- intent: faq/ask_kaggle
+  examples: |
+    - can you help me with Kaggle?
+- intent: faq/ask_r_vs_python
+  examples: |
+    - whats the difference w r and python
+- intent: botchallenge
+  examples: |
+    - is this a chatbot
+    - am I talking to a human?
+- intent: greet
+  examples: |
+    - hello
+    - howdy
+- intent: inform
+  examples: |
+    - I like [books](resource_type)
+- intent: ask_resource
+  examples: |
+    - where cna i learn [machine learning]{"entity": "resource_topic", "value": "ml"}
+    - I want to learn about [ml](resource_topic)
+    - what's a good [book](resource_type)
+    - i want to learn [nlp](resource_topic)
+- intent: out_of_scope
+  examples: |
+    - can I hire you?
+    - I need a thesis topic
+- synonym: ml
+  examples: |
+    - machine learning
+    - ai
+- synonym: nlp
+  examples: |
+    - language technlogy

@@ -17,6 +17,8 @@ nlu:
     - Good day
     - Good morning
     - howdy
+    - hi
+    - \stop
 - intent: inform
   examples: |
     - I like [books](resource_type)
@@ -34,13 +36,13 @@ nlu:
     - can you recommend a learning guide?
     - what are some goods [videos](resource_type)
     - do you know an [nlp](resource_topic) [video](resource_type)?
-    - I want to know about [machine learning]{"entity":"resource_topic", "value":"ml"}
-    - how to do [machine learning]{"entity":"resource_topic", "value":"ml"}?
+    - I want to know about [machine learning]{"entity": "resource_topic", "value": "ml"}
+    - how to do [machine learning]{"entity": "resource_topic", "value": "ml"}?
     - I want to learn about [ml](resource_topic)
     - i want to learn [nlp](resource_topic)
-    - where cna i learn [machine learning]{"entity":"resource_topic", "value":"ml"}
-    - how to learn [ai]{"entity":"resource_topic", "value":"ml"}
-    - i want a [video](resource_type) about [language technlogy]{"entity":"resource_topic", "value":"nlp"}
+    - where cna i learn [machine learning]{"entity": "resource_topic", "value": "ml"}
+    - how to learn [ai]{"entity": "resource_topic", "value": "ml"}
+    - i want a [video](resource_type) about [language technlogy]{"entity": "resource_topic", "value": "nlp"}
 - intent: faq/ask_rasa
   examples: |
     - how can i learn to build a chatbot?
@@ -55,6 +57,8 @@ nlu:
     - do you mentor people?
     - can you guide me?
     - how can I be your student?
+    - are you taking new students?
+    - can you be my teacher?
 - intent: faq/ask_kaggle
   examples: |
     - can you help me with Kaggle?
@@ -67,6 +71,7 @@ nlu:
     - is python better?
     - what should I use R for?
     - python or r?
+    - whats the difference w r and python
 - intent: out_of_scope
   examples: |
     - I'm a recruiter
@@ -75,3 +80,13 @@ nlu:
     - I need a thesis topic
     - what should I write my thesis on?
     - I need advice on my startup
+- intent: faq
+  examples: |
+    - whats up with r and python
+- synonym: ml
+  examples: |
+    - machine learning
+    - ai
+- synonym: nlp
+  examples: |
+    - language technlogy

@@ -1,0 +1,34 @@
+[
+  {
+    "text": "can you be my teacher?",
+    "intent": "faq",
+    "intent_prediction": {
+      "name": "out_of_scope",
+      "confidence": 0.45747557282447815
+    }
+  },
+  {
+    "text": "am I talking to a human?",
+    "intent": "botchallenge",
+    "intent_prediction": {
+      "name": "ask_resource",
+      "confidence": 0.7379985451698303
+    }
+  },
+  {
+    "text": "what's a good book",
+    "intent": "ask_resource",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.2686409056186676
+    }
+  },
+  {
+    "text": "can I hire you?",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.48790934681892395
+    }
+  }
+]

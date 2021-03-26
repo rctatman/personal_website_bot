@@ -41,7 +41,6 @@ actions:
 - '...'
 - query_resource
 - utter_ask_type
-- utter_faq
 - utter_greet
 - utter_i_am_a_bot
 version: '2.0'
