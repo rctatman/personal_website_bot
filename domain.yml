@@ -22,7 +22,8 @@ slots:
     influence_conversation: false
 responses:
   utter_greet:
-  - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked a lot. What questions do you have?
+  - text: "Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked a lot. What questions do you have? 
+  Just so you know, this assistant is being worked on druing a livestream so your repsonses might show up during the stream."
   utter_i_am_a_bot:
   - text: I am a bot, powered by a Rasa!
   utter_ask_type:
