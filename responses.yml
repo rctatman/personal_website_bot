@@ -1,14 +1,22 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents: []
+entities: []
+slots: {}
 responses:
-   utter_greet:
-       - text: |
-           Hello! How can I help you?
-       - text: |
-           Hi!
-   utter_ask_email:
-       - text: |
-           What is your email address?
-   utter_subscribed:
-       - text: |
-           I've subscribed {email} to the newsletter!
-       - text: |
-           You've been subscribed, the newsletter will be sent to {email}.
+  utter_greet:
+  - text: |
+      Hello! How can I help you?
+  - text: |
+      Hi!
+  utter_subscribed:
+  - text: |
+      I've subscribed {email} to the newsletter!
+  - text: You've been subscribed, the newsletter will be sent to {email}.
+actions: []
+forms: {}
+e2e_actions: []

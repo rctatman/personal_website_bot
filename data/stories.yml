@@ -1,33 +1,49 @@
 version: "2.0"
 stories:
- - story: greet
-   steps:
-   - intent: greet
-   - action: utter_greet
-
- - story: are you a bot
-   steps:
-   - intent: botchallenge
-   - action: utter_i_am_a_bot
-
- - story: asking for resource (query)
-   steps:
-   - intent: ask_resource
-   - action: utter_ask_type
-   - intent: inform
-   - slot_was_set:
-     - resource_type: "book"
-   - action: query_resource
-
- - story: interactive_story_1
-   steps:
-   - intent: ask_resource
-     entities:
-     - ml: ml
-   - action: utter_ask_type
-   - intent: inform
-     entities:
-     - resource_type: book
-   - slot_was_set:
-     - resource_type: book
-   - action: query_resource
+- story: greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+- story: are you a bot
+  steps:
+  - intent: botchallenge
+  - action: utter_i_am_a_bot
+- story: asking for resource (query)
+  steps:
+  - intent: ask_resource
+  - action: utter_ask_type
+  - intent: inform
+  - slot_was_set:
+    - resource_type: book
+  - action: query_resource
+- story: interactive_story_1
+  steps:
+  - intent: ask_resource
+    entities:
+    - ml: ml
+  - action: utter_ask_type
+  - intent: inform
+    entities:
+    - resource_type: book
+  - slot_was_set:
+    - resource_type: book
+  - action: query_resource
+- story: Story from Conversation ID d4dab0ee53b24b5a9764b4febe2b31ce
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet
+  - action: utter_greet
+  - intent: faq
+  - action: utter_faq
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: ask_resource
+    entities:
+    - resource_topic: NLP
+    - resource_type: book
+  - slot_was_set:
+    - resource_topic: NLP
+  - slot_was_set:
+    - resource_type: book
+  - action: query_resource

@@ -1,29 +1,40 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- ask_resource
-- inform
-- stop
+- ask_resource:
+    use_entities: true
+- inform:
+    use_entities: true
 - faq:
-    is_retrieval_intent: true
-- greet
-- botchallenge
-- out_of_scope
+    use_entities: true
+- greet:
+    use_entities: true
+- botchallenge:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
 entities:
 - resource_topic
 - resource_type
+- ml
 slots:
   resource_topic:
-    type: text
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
     influence_conversation: false
   resource_type:
-    type: text
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
     influence_conversation: false
 responses:
   utter_greet:
-  - text: "Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked a lot. What questions do you have? 
-  Just so you know, this assistant is being worked on druing a livestream so your repsonses might show up during the stream."
+  - text: Hi! I'm a chatbot that can answer some of the quesions Rachael gets asked a lot. What questions do you have? Just so you know, this assistant is being worked on druing a livestream so your repsonses might show up during the stream.
   utter_i_am_a_bot:
   - text: I am a bot, powered by a Rasa!
   utter_ask_type:
@@ -44,4 +55,5 @@ actions:
 - utter_ask_type
 - utter_greet
 - utter_i_am_a_bot
-version: '2.0'
+forms: {}
+e2e_actions: []

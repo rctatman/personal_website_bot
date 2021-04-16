@@ -19,6 +19,7 @@ nlu:
     - howdy
     - hi
     - \stop
+    - hi!
 - intent: inform
   examples: |
     - I like [books](resource_type)
@@ -43,6 +44,7 @@ nlu:
     - where cna i learn [machine learning]{"entity": "resource_topic", "value": "ml"}
     - how to learn [ai]{"entity": "resource_topic", "value": "ml"}
     - i want a [video](resource_type) about [language technlogy]{"entity": "resource_topic", "value": "nlp"}
+    - can you recommend an [NLP](resource_topic) [book](resource_type)?
 - intent: faq/ask_rasa
   examples: |
     - how can i learn to build a chatbot?
@@ -72,6 +74,7 @@ nlu:
     - what should I use R for?
     - python or r?
     - whats the difference w r and python
+    - do you use python?
 - intent: out_of_scope
   examples: |
     - I'm a recruiter
@@ -80,6 +83,7 @@ nlu:
     - I need a thesis topic
     - what should I write my thesis on?
     - I need advice on my startup
+    - are you looking for a new job?
 - intent: faq
   examples: |
     - whats up with r and python
