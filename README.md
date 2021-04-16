@@ -44,3 +44,10 @@ Discussed & prioritized on stream March 19, 2021.
 - slack - contributor slack?
     - rasa contribs probably don't need answers to the questions my assistant can answer
 
+
+
+# backlog
+- TODO: how to add image to docker-compose (rather than helm)
+- TODO: write doc strings for our Python functions
+- TODO: add chitchat to handle polite turns (thank you, goodbye, etc.)
+- TODO: a way to handle when the bot has no response
