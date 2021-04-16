@@ -5,8 +5,20 @@ A simple bot to answer questions on my personal website. (In development)
 
 Discussed & prioritized on stream March 19, 2021.
 
+## Rasa X + Digital ocean deploy
+- create a droplet (tutorial vid: https://www.youtube.com/watch?v=E9-s_49pw_8&ab_channel=Rasa)
+- install Rasa X
+- while installing, add notice that convos will be seen publically during CDD on the livestream
+- create rasa x instance
+- add our assistant to our server via github integration
+- quick test
+- actions (next week)
+    - create an image of our action server & add to dockerhub (using manual install)
+    - add action server to our rasa x instance
+- NLU insights
+
 ## possibilities for first deployment
-- 1st: Rasa X (server, heroku?): share using chatbot sharing feature for early CDD & link where appropraite
+- 1st: Rasa X (server, digital ocean?): share using chatbot sharing feature for early CDD & link where appropraite
     - pro: good proof of concpet, can use for inital softlaunch/early CDD, link from my website, need to set up Rasa X anyway for CDD/annotation/model management
     - con: kicks the can on the front end integration problem, already done it on livestream (double dipping :P)
 - 2nd: twitter - pref. is for convos in the dms, [which is definintely possible](https://www.freecodecamp.org/news/how-to-create-your-own-auto-direct-message-twitter-bot-for-free-e851265ce730/)
@@ -18,7 +30,6 @@ Discussed & prioritized on stream March 19, 2021.
 - 4th: Website: Add jekyll plugin (?) to my existing website
     - pro: can use w/ existing website, lots of people want to do something similar (but not necessarily w/ jekyll), if i can find a plugin i don't have to do any front end work myself (besides maybe adjusting color) 
     - con: haven't found a suitable plug in yet, may spend a lot of time searching only the find there's nothing that I can use
-
 
 
 ## not happening
