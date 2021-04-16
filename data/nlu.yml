@@ -8,6 +8,8 @@ nlu:
     - are you a bot
     - is this a real person
     - you're a bot, aren't you?
+    - are u there?
+    - who are you?
 - intent: greet
   examples: |
     - Hi
@@ -20,12 +22,22 @@ nlu:
     - hi
     - \stop
     - hi!
+    - hello?
+    - Hello ?
 - intent: inform
   examples: |
     - I like [books](resource_type)
     - i prefer a [book](resource_type)
     - [videos](resource_type)
     - i'd like a [course](resource_type)
+    - [Course](resource_type)
+    - [video](resource_type)
+    - [course](resource_type)
+    - — a [book](resource_type) then ?
+    - [vid](resource_type)
+    - Oh a [video](resource_type) !
+    - [ml](resource_topic)
+    - [ml](resource_topic) ?
 - intent: ask_resource
   examples: |
     - what are some good learning resources?
@@ -45,6 +57,14 @@ nlu:
     - how to learn [ai]{"entity": "resource_topic", "value": "ml"}
     - i want a [video](resource_type) about [language technlogy]{"entity": "resource_topic", "value": "nlp"}
     - can you recommend an [NLP](resource_topic) [book](resource_type)?
+    - can you recommnd a [book](resource_type) about [nlp](resource_topic)
+    - can you recomend an [nlp](resource_topic) [book](resource_type)
+    - can you recommend me some [books](resource_type)?
+    - recommend a [course](resource_type) for [nlp](resource_topic)
+    - [machine](resource_topic) l
+    - [machine](resource_topic) l?
+    - recommend a [book](resource_type) for [machine learning]{"entity": "resource_topic", "value": "ml"}.
+    - recommend a [book](resource_type)
 - intent: faq/ask_rasa
   examples: |
     - how can i learn to build a chatbot?
@@ -53,6 +73,9 @@ nlu:
     - I need help with [Rasa](resource_topic)
     - what's [rasa](resource_topic)?
     - what can I do with [rasa](resource_topic)
+    - what does [rasa](resource_topic) mean?
+    - what is [rasa](resource_topic)
+    - how to start making a [rasa](resource_topic) chatbot?
 - intent: faq/ask_mentor
   examples: |
     - can you be my mentor?
@@ -75,6 +98,7 @@ nlu:
     - python or r?
     - whats the difference w r and python
     - do you use python?
+    - what language do u code
 - intent: out_of_scope
   examples: |
     - I'm a recruiter
