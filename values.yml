@@ -1,6 +1,0 @@
-# app (custom action server) specific settings
-app:
-    # name of the custom action server image to use
-    name: "rctatman/personal-website-bot"
-    # tag refers to the custom action server image tag
-    tag: "first_commit"

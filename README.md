@@ -47,7 +47,15 @@ Discussed & prioritized on stream March 19, 2021.
 
 
 # backlog
-- TODO: how to add image to docker-compose (rather than helm)
+- TODONE: how to add image to docker-compose (rather than helm)
+    - /etc/rasa add image path (on dockerhub) to docker-compose or docker-compose.override.yaml
+    - to check running dockers = docker ps
+    - to check logs = docker logs [continer id, get from ps list]
+- TODO: figure out where your sqlite database is
+    - to do: host database in different image?
+    - from chat (ty!): app needs DNS translation (add translation in etc/hosts as localhost). copy sentence in dockerfile when you build the image has to moe the db file inside the image
+    - from chat: digital ocena managed database?    
+- TODO: update rasa in docker compose
 - TODO: write doc strings for our Python functions
 - TODO: add chitchat to handle polite turns (thank you, goodbye, etc.)
 - TODO: a way to handle when the bot has no response
