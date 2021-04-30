@@ -54,7 +54,8 @@ Discussed & prioritized on stream March 19, 2021.
 - TODO: figure out where your sqlite database is
     - to do: host database in different image?
     - from chat (ty!): app needs DNS translation (add translation in etc/hosts as localhost). copy sentence in dockerfile when you build the image has to moe the db file inside the image
-    - from chat: digital ocena managed database?    
+    - from chat: digital ocena managed database? 
+- TODO: add error message if database file not found   
 - TODO: update rasa in docker compose
 - TODO: write doc strings for our Python functions
 - TODO: add chitchat to handle polite turns (thank you, goodbye, etc.)
