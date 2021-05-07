@@ -12,10 +12,13 @@ Discussed & prioritized on stream March 19, 2021.
 - create rasa x instance
 - add our assistant to our server via github integration
 - quick test
-- actions (next week)
-    - create an image of our action server & add to dockerhub (using manual install)
-    - add action server to our rasa x instance
-- NLU insights
+- create an image of our action server & add to dockerhub (using manual install)
+- add action server to our rasa x instance
+- added database to our action server image
+- update action server image w/ new version of database
+- TODO: 
+    - NLU insights
+    - share bot & get user data & do CDD
 
 ## possibilities for first deployment
 - 1st: Rasa X (server, digital ocean?): share using chatbot sharing feature for early CDD & link where appropraite

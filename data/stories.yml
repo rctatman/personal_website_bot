@@ -1,4 +1,5 @@
 version: "2.0"
+
 stories:
  - story: greet
    steps:
@@ -32,10 +33,10 @@ stories:
      - resource_type: book
    - action: query_resource
 
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: faq
-  - action: utter_faq
-  - intent: greet
+ - story: interactive_story_2
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - intent: faq
+   - action: utter_faq
+   - intent: greet
