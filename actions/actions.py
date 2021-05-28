@@ -39,7 +39,11 @@ class QueryResourceType(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        """
+        Runs a query using only the type column, fuzzy matching against the
+        resource_type slot. Outputs an utterance to the user w/ the relevent 
+        information for one of the returned rows.
+        """
         conn = DbQueryingMethods.create_connection(db_file="./edu_db/resourcesDB")
 
         slot_value = tracker.get_slot("resource_type")
@@ -65,6 +69,12 @@ class QueryResource(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        """
+        Runs a query using both the topic & type columns (fuzzy matching against the
+        relevent slots). Finds a match for both if possible, otherwise a match for the
+        type only, topic only in that order. Output is an utterance directly to the
+        user with a randomly selected matching row.
+        """
         conn = DbQueryingMethods.create_connection(db_file="./edu_db/resourcesDB")
 
         # get matching entries for resource type
